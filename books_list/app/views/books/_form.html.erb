@@ -1,0 +1,35 @@
+<div class='col-6 book-form'>
+  <p>
+    <%= form_for(Book.new, remote: true) do |f| %>
+    <legend>New Book</legend>
+
+    <div class='col-2'>
+
+      <label>
+        <strong>Genre</strong>
+      </label>
+      <br>
+      <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) %>
+
+      <br>
+
+      <%= f.text_field :title, placeholder: 'Title' %>
+
+      <%= f.text_field :author, placeholder: 'Author' %>
+
+      <%= f.text_area :description, placeholder: 'Description' %>
+
+      <%= f.text_field :amazon_id, placeholder: 'Amazon ID' %>
+
+      <legend>Rating</legend>
+      <% (1..5).each do |rating| %>
+      <label class='radio-inline'>
+        <%= rating %><%= f.radio_button :rating, rating %>
+      </label>
+      <% end %>
+      <br>
+      <%= f.submit class: 'button button-green' %>
+    </div>
+    <% end %>
+  </p>
+</div>

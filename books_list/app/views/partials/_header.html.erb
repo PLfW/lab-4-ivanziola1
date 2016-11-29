@@ -1,0 +1,24 @@
+<nav>
+  <ul class="navbar" id="navbarTop">
+    <li>
+      <%= link_to 'Book List', root_url %>
+    </li>
+    <li>
+      <%= link_to 'API', api_url %></li>
+    <li>
+      <%= link_to 'Admin', admin_books_path if current_user.try(:admin?) %></li>
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to('Log out',destroy_user_session_path, method: :delete) %>
+    </li>
+
+  <% else %>
+    <li>
+      <%= link_to('Sign in', new_user_session_path) %>
+    </li>
+    <% end %>
+    <li class="icon">
+      <a href="javascript:void(0);" onclick="navbar()">&#9776;</a>
+    </li>
+  </ul>
+</nav>
